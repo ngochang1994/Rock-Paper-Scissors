@@ -19,7 +19,7 @@ using namespace std;
  * UserPick()
  *
  */
-char UserPick(int us_option)
+char UserPick(int user)
 {
     char res;
     // user's pick
@@ -28,18 +28,18 @@ char UserPick(int us_option)
     cout << "1 - Rock\n2 - Paper\n3 - Scissors\n";
     cout << "Let's pick your option: ";
 
-    cin >> us_option;
-    if(us_option == 1)
+    cin >> user;
+    if(user == 1)
     {
         res = ROCK;
         cout << "You pick ROCK!\n";
     }
-    else if(us_option == 2)
+    else if(user == 2)
     {
         res = PAPER;
         cout << "You pick PAPER!\n";
     }
-    else if(us_option == 3)
+    else if(user == 3)
     {
         res = SCISSORS;
         cout << "You pick SCISSORS!\n";
@@ -50,7 +50,7 @@ char UserPick(int us_option)
         cin >> n;
         if(n == 'Y' || n == 'y')
         {
-            UserPick(us_option);
+            UserPick(user);
         }
         else
         {
@@ -66,27 +66,29 @@ char UserPick(int us_option)
  * ComputerPick()
  *
  **/
-char ComputerPick(int comp_pick)
+char ComputerPick(int computer)
 {
     char res;
     cout << "*******************************************" << endl;
     cout << "Give me a while for my turn..." << endl;
+    srand(time(0));
+
     sleep(2);
     // Pick a random option
-    comp_pick = rand() % 3 + 1;     // Possible outcomes: 1 || 2 || 3
+    computer = rand() % 3 + 1;     // Possible outcomes: 1 || 2 || 3
 
 
-    if(comp_pick == 1)
+    if(computer == 1)
     {
         res = ROCK;
         cout << "Okay. I pick ROCK!" << endl;
     }
-    if(comp_pick == 2)
+    if(computer == 2)
     {
         res = PAPER;
         cout << "Okay. I pick PAPER!" << endl;
     }
-    if(comp_pick == 3)
+    if(computer == 3)
     {
         res = SCISSORS;
         cout << "Okay. I pick SCISSORS!" << endl;
@@ -101,39 +103,39 @@ int main()
 {
     int u, c;
 
-    char us = UserPick(u);
-    char com = ComputerPick(c);
+    char user = UserPick(u);
+    char computer = ComputerPick(c);
 
-    cout << "Then, the result is..." << endl;
+    cout << "\nThen, the result is..." << endl;
     sleep(2);
 
-    if(us == ROCK && com == PAPER)
+    if(user == ROCK && computer == PAPER)
     {
-        cout << "I win. Paper wraps Rock!" << endl;
+        cout << "Paper wraps Rock. I win :)" << endl;
     }
-    else if(us == ROCK && com == SCISSORS)
+    else if(user == ROCK && computer == SCISSORS)
     {
-        cout << "You win. Rock smashes Scissors" << endl;
+        cout << "Rock smashes Scissors. You win :(" << endl;
     }
-    else if(us == PAPER && com == ROCK)
+    else if(user == PAPER && computer == ROCK)
     {
-        cout << "You win. Paper wraps Rock" << endl;
+        cout << "Paper wraps Rock. You win :(" << endl;
     }
-    else if(us == PAPER && com == SCISSORS)
+    else if(user == PAPER && computer == SCISSORS)
     {
-        cout << "I win. Scissors cut Paper" << endl;
+        cout << "Scissors cut Paper. I win :)" << endl;
     }
-    else if(us == SCISSORS && com == ROCK)
+    else if(user == SCISSORS && computer == ROCK)
     {
-        cout << "I win. Rock smashes Scissors" << endl;
+        cout << "Rock smashes Scissors. I win :)" << endl;
     }
-    else if(us == SCISSORS && com == PAPER)
+    else if(user == SCISSORS && computer == PAPER)
     {
-        cout << "You win. Scissors cut Paper" << endl;
+        cout << "Scissors cut Paper. You win :(" << endl;
     }
     else
     {
-        cout << "TIE GAME" << endl;
+        cout << "TIE GAME!" << endl;
     }
 
 
